@@ -5,13 +5,13 @@ class customlisttile extends StatelessWidget {
   IconData? editicon;
   IconData? deleteicon;
   Color? color;
+  bool colors;
   String title;
   bool? checkbovalue;
   Function(bool?)? onChanged;
   Function()? deletepress;
   Function()? editpress;
   bool underline;
-  
 
   customlisttile({
     // super.key,
@@ -25,6 +25,7 @@ class customlisttile extends StatelessWidget {
     required this.title,
     required this.onChanged,
     required this.underline,
+    required this.colors,
   });
   @override
   Widget build(BuildContext context) {
@@ -36,17 +37,19 @@ class customlisttile extends StatelessWidget {
             icon: Icon(deleteicon, color: color),
             onPressed: deletepress,
           ),
-          IconButton(icon: Icon(editicon), onPressed: editpress),
+          underline
+              ? SizedBox()
+              : IconButton(icon: Icon(editicon), onPressed: editpress),
         ],
       ),
       title: Text(
         title,
         style: TextStyle(
-          color: Colors.black,
           fontWeight: FontWeight.bold,
           decoration: underline
               ? TextDecoration.lineThrough
               : TextDecoration.none,
+          color: colors ? Colors.red : Colors.black,
         ),
       ),
       leading: Checkbox(value: checkbovalue, onChanged: onChanged),

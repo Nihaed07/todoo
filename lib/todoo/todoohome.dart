@@ -59,6 +59,7 @@ class Todoohome extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return customlisttile(
                     underline: getData.tasks[index]["checked"],
+                    colors: getData.tasks[index]["checked"],
                     checkbovalue: getData.tasks[index]["checked"],
                     color: Colors.red,
                     deleteicon: Icons.delete,
